@@ -1,0 +1,20 @@
+{
+  "name": "properti-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create properti-db",
+    "db:migrate": "wrangler d1 execute properti-db --local --file=./schema.sql",
+    "db:migrate:remote": "wrangler d1 execute properti-db --remote --file=./schema.sql",
+    "secrets:setup": "echo 'Jalankan: wrangler secret put ADMIN_USER && wrangler secret put ADMIN_PASS && wrangler secret put SESSION_SECRET'"
+  },
+  "dependencies": {
+    "hono": "^4.13.1"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

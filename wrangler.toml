@@ -1,0 +1,28 @@
+name = "properti-web"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ── Database (data listing properti) ─────────────────────────────
+[[d1_databases]]
+binding = "DB"
+database_name = "properti-db"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"   # isi setelah `wrangler d1 create properti-db`
+
+# ── Storage (foto/gallery) ────────────────────────────────────────
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "properti-media"
+
+# ── Variabel non-rahasia (FALLBACK saja) ──────────────────────────
+# Nama situs, nomor WhatsApp, dan warna tema SEKARANG bisa diatur langsung
+# dari panel admin (/admin/settings) tanpa perlu redeploy. Nilai di bawah ini
+# cuma dipakai sebagai fallback kalau admin belum pernah mengisi pengaturan.
+[vars]
+SITE_NAME = "Harjita Village"
+WHATSAPP_NUMBER = "6281250501948"   # nomor WA admin, format 62xxxx tanpa tanda +
+
+# Secrets yang WAJIB diset lewat `wrangler secret put` (jangan taruh di sini):
+#   ADMIN_USER      -> username login admin
+#   ADMIN_PASS      -> password login admin
+#   SESSION_SECRET  -> string acak panjang untuk sign session cookie
